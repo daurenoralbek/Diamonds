@@ -4,7 +4,7 @@ import pandas as pd
 app = Flask(__name__)
 
 # Load the dataset with predictions
-df = pd.read_csv('diamonds_with_predictions.csv')
+df = pd.read_csv('outputs/diamonds_with_predictions.csv')
 df['ID'] = df.index  # Returns the ID column to find the needed diamond
 
 # Define high-quality criteria
