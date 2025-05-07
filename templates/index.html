@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Undervalued High-Quality Diamonds</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Top Undervalued High-Quality Diamonds</h1>
+        <p>Enter the number of top undervalued high-quality diamonds you want to see.</p>
+
+        <form method="POST">
+            <label for="n">Number of Diamonds (n):</label>
+            <input type="number" name="n" id="n" required><br>
+            <button type="submit">Show Top Diamonds</button>
+        </form>
+
+        {% if error %}
+        <p style="color: red;">{{ error }}</p>
+        {% endif %}
+
+        {% if top_diamonds %}
+        <h2>Top {{ top_diamonds|length }} Undervalued High-Quality Diamonds</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Carat Weight</th>
+                    <th>Cut</th>
+                    <th>Color</th>
+                    <th>Clarity</th>
+                    <th>Polish</th>
+                    <th>Symmetry</th>
+                    <th>Report</th>
+                    <th>Price ($)</th>
+                    <th>Predicted Price ($)</th>
+                    <th>Price Difference ($)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for diamond in top_diamonds %}
+                <tr>
+                    <td>{{ diamond['Carat Weight'] }}</td>
+                    <td>{{ diamond['Cut'] }}</td>
+                    <td>{{ diamond['Color'] }}</td>
+                    <td>{{ diamond['Clarity'] }}</td>
+                    <td>{{ diamond['Polish'] }}</td>
+                    <td>{{ diamond['Symmetry'] }}</td>
+                    <td>{{ diamond['Report'] }}</td>
+                    <td>{{ diamond['Price'] }}</td>
+                    <td>{{ diamond['Predicted_Price'] }}</td>
+                    <td>{{ diamond['Price_Difference'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
+</body>
+</html>
